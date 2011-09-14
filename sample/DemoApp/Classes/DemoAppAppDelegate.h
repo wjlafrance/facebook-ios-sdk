@@ -23,7 +23,7 @@
   DemoAppViewController* controller;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
 
 @end
 

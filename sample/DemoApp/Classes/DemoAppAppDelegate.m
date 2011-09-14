@@ -38,11 +38,6 @@
   return [[controller facebook] handleOpenURL:url];
 }
 
-- (void)dealloc {
-  [window release];
-  [controller release];
-  [super dealloc];
-}
 
 
 @end

@@ -43,8 +43,8 @@ static NSString* kAppId = @"221575704567928";
 
 
   if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-    _permissions =  [[NSArray arrayWithObjects:
-                      @"read_stream", @"publish_stream", @"offline_access",nil] retain];
+    _permissions =  [NSArray arrayWithObjects:
+                      @"read_stream", @"publish_stream", @"offline_access",nil];
     _facebook = [[Facebook alloc] initWithAppId:kAppId
                                     andDelegate:self];
   }
@@ -68,17 +68,6 @@ static NSString* kAppId = @"221575704567928";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
 
-- (void)dealloc {
-  [_label release];
-  [_fbButton release];
-  [_getUserInfoButton release];
-  [_getPublicInfoButton release];
-  [_publishButton release];
-  [_uploadPhotoButton release];
-  [_facebook release];
-  [_permissions release];
-  [super dealloc];
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
@@ -138,7 +127,7 @@ static NSString* kAppId = @"221575704567928";
  */
 - (IBAction)publishStream:(id)sender {
 
-  SBJSON *jsonWriter = [[SBJSON new] autorelease];
+  SBJSON *jsonWriter = [SBJSON new];
 
   NSDictionary* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:
                                @"Always Running",@"text",@"http://itsti.me/",@"href", nil], nil];
@@ -180,7 +169,6 @@ static NSString* kAppId = @"221575704567928";
                         andHttpMethod:@"POST"
                         andDelegate:self];
 
-  [img release];
 }
 
 // Override to allow orientations other than the default portrait orientation.

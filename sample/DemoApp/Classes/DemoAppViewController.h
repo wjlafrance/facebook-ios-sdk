@@ -34,7 +34,7 @@ FBSessionDelegate>{
   NSArray* _permissions;
 }
 
-@property(nonatomic, retain) UILabel* label;
+@property(nonatomic, strong) UILabel* label;
 
 @property(readonly) Facebook *facebook;
 
