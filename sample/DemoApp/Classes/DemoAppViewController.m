@@ -127,18 +127,24 @@ static NSString* kAppId = @"221575704567928";
  */
 - (IBAction)publishStream:(id)sender {
 
-  SBJSON *jsonWriter = [SBJSON new];
+    NSError *jsonWritingError = nil;
 
   NSDictionary* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:
                                @"Always Running",@"text",@"http://itsti.me/",@"href", nil], nil];
 
-  NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
+    NSData *actionLinksData = [NSJSONSerialization dataWithJSONObject:actionLinks options:0 error:&jsonWritingError];
+    NSString *actionLinksStr = [[NSString alloc] initWithData:actionLinksData encoding:NSASCIIStringEncoding];
+    
   NSDictionary* attachment = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"a long run", @"name",
                                @"The Facebook Running app", @"caption",
                                @"it is fun", @"description",
                                @"http://itsti.me/", @"href", nil];
-  NSString *attachmentStr = [jsonWriter stringWithObject:attachment];
+    
+    
+    NSData *attachmentData = [NSJSONSerialization dataWithJSONObject:attachment options:0 error:&jsonWritingError];
+    NSString *attachmentStr = [[NSString alloc] initWithData:attachmentData encoding:NSASCIIStringEncoding];
+    
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  @"Share on Facebook",  @"user_message_prompt",
                                  actionLinksStr, @"action_links",
