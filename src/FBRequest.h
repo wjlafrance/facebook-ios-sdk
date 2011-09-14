@@ -23,12 +23,7 @@
  * Do not use this interface directly, instead, use method in Facebook.h
  */
 @interface FBRequest : NSObject {
-    __weak id<FBRequestDelegate> _delegate;
-    NSString*             _url;
-    NSString*             _httpMethod;
-    NSMutableDictionary*  _params;
-    NSURLConnection*      _connection;
-    NSMutableData*        _responseText;
+    
 }
 
 

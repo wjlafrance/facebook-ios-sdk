@@ -174,21 +174,6 @@ responseText = _responseText;
  * parse the response data
  */
 - (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
-    /*
-     NSString* responseString = [[NSString alloc] initWithData:data
-     encoding:NSUTF8StringEncoding];
-     if ([responseString isEqualToString:@"true"]) {
-     return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
-     } else if ([responseString isEqualToString:@"false"]) {
-     if (error != nil) {
-     *error = [self formError:kGeneralErrorCode
-     userInfo:[NSDictionary
-     dictionaryWithObject:@"This operation can not be completed"
-     forKey:@"error_msg"]];
-     }
-     return nil;
-     }
-     */
     NSError *jsonParseError = nil;
     id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParseError];
     
