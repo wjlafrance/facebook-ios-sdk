@@ -34,7 +34,7 @@
 
 @property(nonatomic, copy) NSString* accessToken;
 @property(nonatomic, copy) NSDate* expirationDate;
-@property(nonatomic, unsafe_unretained) id<FBSessionDelegate> sessionDelegate;
+@property(nonatomic, weak) id<FBSessionDelegate> sessionDelegate;
 @property(nonatomic, copy) NSString* localAppId;
 
 - (id)initWithAppId:(NSString *)appId
